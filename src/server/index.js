@@ -5,8 +5,8 @@ const dotenv = require('dotenv');
 dotenv.config();
 const aylien = require("aylien_textapi");
 const textapi = new aylien({
-  application_id: aylien.env.API_ID,
-  application_key: aylien.env.API_KEY
+  application_id: process.env.API_ID,
+  application_key: process.env.API_KEY
 });
 
 const app = express();
