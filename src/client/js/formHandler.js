@@ -5,13 +5,22 @@ function handleSubmit(event) {
     const formName = document.getElementById('name').value;
     const formText = document.getElementById('sentiment').value;
     const formResult = document.getElementById('results');
-    Client.checkForName(formName);
-    Client.postData('/sentiment',{name: formName,text: formText})
-    .then(res => {
-        setTimeout(()=> formResult.innerHTML = res.message, 500);
-        formResult.classList.add('results-anim');
-        setTimeout(()=> formResult.classList.remove('results-anim'), 1000);
-    });
+    if(isEmpty(formText) || isEmpty(formName)){
+      alert('Please fill out the fields');
+    }
+    else {
+      Client.checkForName(formName);
+      Client.postData('/sentiment',{name: formName,text: formText})
+      .then(res => {
+          setTimeout(()=> formResult.innerHTML = res.message, 500);
+          formResult.classList.add('results-anim');
+          setTimeout(()=> formResult.classList.remove('results-anim'), 1000);
+      });
+    }
+}
+
+function isEmpty(str){
+    return str === null || str.match(/^ *$/) !== null;
 }
 
 export { handleSubmit }
