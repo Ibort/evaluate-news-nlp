@@ -47,5 +47,8 @@ app.post('/sentiment', function (req, res) {
       const polarity = response.polarity;
       res.send({'message' : `So ${name} i'm ${percent}% sure that was a ${polarity} experience today!`});
     }
+    else{
+      res.send({'message' : 'There was an error with the request try again.'});
+    }
   });
 })
