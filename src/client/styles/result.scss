@@ -1,0 +1,22 @@
+.form__results{
+  position: absolute;
+    display: flex;
+    font-size: 2em;
+    overflow: hidden;
+    height: 2em;
+
+}
+
+.results-anim{
+  animation: slideinOut 1s forwards;
+}
+
+#results{
+    position: relative;
+}
+
+@keyframes slideinOut {
+  0% { top: 0px;}
+  50% {top: 1em;}
+  100% { top: 0px;}
+}
