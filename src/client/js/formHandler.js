@@ -15,7 +15,8 @@ function handleSubmit(event) {
           setTimeout(()=> formResult.innerHTML = res.message, 500);
           formResult.classList.add('results-anim');
           setTimeout(()=> formResult.classList.remove('results-anim'), 1000);
-      });
+      })
+      .catch(error => alert('There was a problem with the connection to the server, try again.'))
     }
 }
 
