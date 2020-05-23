@@ -42,7 +42,11 @@ app.post('/sentiment', function (req, res) {
   textapi.sentiment({
     'text': text
   }, function(error, response) {
-    if (error === null) {
+    if (error) {
+      res.send({'message' : 'There was an error with the request try again.'});
+      console.log('Aylien api error:'+error);
+    }
+    else{
       const polConf = Math.round(response.polarity_confidence * 100);
       const polarity = response.polarity;
       const subjectivity = response.subjectivity;
@@ -55,9 +59,6 @@ app.post('/sentiment', function (req, res) {
                             `Subjectivity: ${subjectivity}. <br>` +
                             `Subjectivity confidnece: ${subConf}%.`
               });
-    }
-    else{
-      res.send({'message' : 'There was an error with the request try again.'});
     }
   });
 })

@@ -8,6 +8,7 @@
     "build-prod": "webpack --config webpack.prod.js",
     "build-dev": "webpack-dev-server  --config webpack.dev.js --open --port 8081"
   },
+  "proxy": "http://localhost:8081",
   "jest": {
     "automock": false,
     "setupFiles": [
