@@ -5,7 +5,7 @@ describe('testing sendNameAndText', () => {
     fetch.resetMocks()
   })
 
-  it('Sending name and text and aylien returns data to me', () => {
+  it('Sending name and text and aylien returns data', () => {
     fetch.mockResponseOnce(JSON.stringify({ data: '12345' }))
 
     //assert on the response
