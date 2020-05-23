@@ -43,9 +43,18 @@ app.post('/sentiment', function (req, res) {
     'text': text
   }, function(error, response) {
     if (error === null) {
-      const percent = Math.round(response.polarity_confidence * 100);
+      const polConf = Math.round(response.polarity_confidence * 100);
       const polarity = response.polarity;
-      res.send({'message' : `So ${name} i'm ${percent}% sure that was a ${polarity} experience today!`});
+      const subjectivity = response.subjectivity;
+      const text = response.text;
+      const subConf = Math.round(response.subjectivity_confidence * 100);
+      res.send({'message' : `So ${name}. <br>` +
+                            `Your text: ${text} <br>` +
+                            `Polarity: ${polarity}. <br>` +
+                            `Polarity confidence: ${polConf}%. <br>` +
+                            `Subjectivity: ${subjectivity}. <br>` +
+                            `Subjectivity confidnece: ${subConf}%.`
+              });
     }
     else{
       res.send({'message' : 'There was an error with the request try again.'});
