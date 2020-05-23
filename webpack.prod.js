@@ -7,15 +7,15 @@ const TerserPlugin = require('terser-webpack-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
-    entry: './src/client/index.js',
     mode: 'production',
+    entry: './src/client/index.js',
     optimization: {
                     minimizer: [new TerserPlugin({}), new OptimizeCSSAssetsPlugin({})],
-                  },
+    },
     output: {
               libraryTarget: 'var',
               library: 'Client'
-            },
+    },
     module: {
         rules: [
             {
@@ -30,11 +30,11 @@ module.exports = {
         ]
     },
     plugins: [
-        new HtmlWebPackPlugin({
-            template: "./src/client/views/index.html",
-            filename: "./index.html"
-        }),
-        new MiniCssExtractPlugin({filename: '[name].css'}),
-        new WorkboxPlugin.GenerateSW()
+                new HtmlWebPackPlugin({
+                 template: "./src/client/views/index.html",
+                 filename: "./index.html",
+                }),
+                new MiniCssExtractPlugin({filename: '[name].css'}),
+                new WorkboxPlugin.GenerateSW()
     ]
 }
