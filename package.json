@@ -6,7 +6,7 @@
     "test": "jest",
     "start": "node src/server/index.js",
     "build-prod": "webpack --config webpack.prod.js",
-    "build-dev": "webpack-dev-server  --config webpack.dev.js --open --port 8081"
+    "build-dev": "webpack-dev-server  --config webpack.dev.js --open"
   },
   "proxy": "http://localhost:8081",
   "jest": {
