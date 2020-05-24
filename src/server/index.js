@@ -52,13 +52,13 @@ app.post('/sentiment', function (req, res) {
       const subjectivity = response.subjectivity;
       const text = response.text;
       const subConf = Math.round(response.subjectivity_confidence * 100);
-      res.send({'message' : `So ${name}. <br>` +
-                            `Your text: ${text} <br>` +
-                            `Polarity: ${polarity}. <br>` +
-                            `Polarity confidence: ${polConf}%. <br>` +
-                            `Subjectivity: ${subjectivity}. <br>` +
-                            `Subjectivity confidnece: ${subConf}%.`
-              });
+      res.send({'name': `So ${name}.`,
+                'text': `Your text: ${text}`,
+                'polarity': `Polarity: ${polarity}.`,
+                'polconf': `Polarity confidence: ${polConf}%.`,
+                'subjectivity': `Subjectivity: ${subjectivity}.`,
+                'subconf': `Subjectivity confidnece: ${subConf}%.`
+      });
     }
   });
 })

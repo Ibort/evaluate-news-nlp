@@ -12,7 +12,16 @@ function handleSubmit(event) {
       Client.checkForName(formName);
       Client.postData('/sentiment',{name: formName,text: formText})
       .then(res => {
-          setTimeout(()=> formResult.innerHTML = res.message, 500);
+          const result = document.createDocumentFragment();
+          for (let [key, value] of Object.entries(res)) {
+          const element = document.createElement("span");
+          element.innerHTML = `${value}`;
+          result.appendChild(element);
+          }
+          setTimeout(()=> {
+            formResult.innerHTML = null;
+            formResult.appendChild(result);
+          }, 500);
           formResult.classList.add('results-anim');
           setTimeout(()=> formResult.classList.remove('results-anim'), 1000);
       })

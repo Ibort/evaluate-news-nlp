@@ -11,6 +11,8 @@
 
 #results{
     position: relative;
+    display: flex;
+    flex-flow: column;
 }
 
 @keyframes slideinOut {
